@@ -1,0 +1,73 @@
+import React, { useState, useContext } from 'react';
+import './Header.css';
+import searchIcon from '../assets/search.png';
+import logo from '../assets/cpu.png';
+import { Link, useNavigate } from "react-router-dom";
+import { ThemeContext } from '../ThemeContext';
+
+const Header = () => {
+  const [search, setSearch] = useState("");
+  const navigate = useNavigate();
+  const { theme, toggleTheme } = useContext(ThemeContext);
+
+  async function searchData() {
+    if (search !== "") {
+      try {
+        const res = await fetch("http://localhost:3000/home/search", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ search }),
+        });
+
+        const data = await res.json();
+        // Navigate to searched_products route and send data as state
+        navigate("/searched_products", { state: { searchedProducts: data } });
+      } catch (e) {
+        console.log(e);
+      }
+    }
+  }
+
+  return (
+    <div className='navbar'>
+      <img src={logo} alt='logo icon' className='logo'/>
+      <ul>
+        <Link to={'/'}><li>Home</li></Link>
+        <Link to={'/askai'}><li>Ask AI</li></Link>
+        <Link to={'/builder'}><li>PC Builder</li></Link>
+        <Link to={'/editors'}><li>Editor's Choice</li></Link>
+      </ul>
+      <div className='search-box'>
+        <input 
+          type='text' 
+          placeholder='Search' 
+          value={search} 
+          onChange={(e) => setSearch(e.target.value)} 
+        />
+        <img 
+          className='search_icon' 
+          onClick={searchData} 
+          src={searchIcon} 
+          alt='search icon'
+        />
+      </div>
+      <div className='theme-container'>
+        <div className={`theme-toggle ${theme === 'dark' ? 'dark-mode' : 'light-mode'}`} onClick={toggleTheme}>
+          {theme === 'dark' ? (
+            <>
+              <span className='icon moon'>🌙</span>
+              <span className='label'>Dark Mode</span>
+            </>
+          ) : (
+            <>
+              <span className='icon sun'>☀️</span>
+              <span className='label'>Light Mode</span>
+            </>
+          )}
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default Header;

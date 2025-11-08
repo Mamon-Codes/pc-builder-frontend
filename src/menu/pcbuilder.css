@@ -1,0 +1,144 @@
+.pc-builder {
+  font-family: Arial, sans-serif;
+  background: var(--background-color);
+  color: var(--text-color);
+  min-height: 100vh;
+  padding: 20px;
+}
+.super-mega-container { }
+
+.builder-container {
+  width: 50%;
+  background: var(--background-color);
+  color: var(--text-color);
+  border-radius: 10px;
+  padding: 20px;
+  margin-top: 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  margin-left: 25%;
+  margin-right: 25%;
+  margin-top: 5%;
+  margin-bottom: 5%;
+}
+
+.title-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.title {
+  font-size: 28px;
+  font-weight: bold;
+  color: var(--text-color);
+}
+
+.total-price {
+  font-size: 20px;
+  font-weight: bold;
+  color: var(--background-color);
+  background: linear-gradient(135deg, #ff8432, #ff8017);
+  padding: 8px 16px;
+  width: 15%;
+  text-align: center;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+}
+
+.component-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.component-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--background-color);
+  color: var(--text-color);
+  padding: 12px;
+  border: 1px solid var(--text-color);
+  border-radius: 8px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+}
+
+.component-card img {
+  width: 50px;
+  margin-right: 15px;
+}
+
+.component-info {
+  flex: 1;
+}
+
+.component-info p {
+  margin: 2px 0;
+}
+
+.component-info .required {
+  font-size: 12px;
+  background: #ffdddd;
+  color: #c00;
+  margin-left: 5px;
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+.component-info .comp-title {
+  color: var(--text-color);
+}
+
+.component-info .name {
+  font-size: 20px;
+  margin-top: 4px;
+  font-weight: bolder;
+}
+
+.component-action {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 6px;
+}
+
+.component-action .price {
+  color: #f10f0f;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.select-button {
+  background: #004aad;
+  color: var(--background-color);
+  border: none;
+  padding: 6px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.select-button:hover {
+  background: #063b96;
+}
+
+/* 🔥 Animations */
+.fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 0.6s ease forwards;
+}
+
+.stagger {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 0.6s ease forwards;
+}
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
